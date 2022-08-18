@@ -1,0 +1,16 @@
+@import 'reset';
+@import 'variables';
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'sasscript';
+@import 'cards';
+@import 'mediaqueries';
+@import 'btn';
+@import 'carousel';
+
+html, body {
+    @include size(auto, 100%);
+}
+
+ul {
+    list-style-type: none;
+}

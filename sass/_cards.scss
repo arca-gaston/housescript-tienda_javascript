@@ -1,0 +1,11 @@
+.card {
+    transition: all 0.6s;
+    &:hover{-webkit-box-shadow: 9px 10px 31px 11px rgba(0, 0, 0, 0.5) !important;
+        box-shadow: 9px 10px 31px 11px rgba(0, 0, 0, 0.5) !important;
+    }
+}
+
+.card-img-css {
+    @extend %img-cover;
+    @include size(100%, 25vh);
+}

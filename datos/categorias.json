@@ -1,0 +1,18 @@
+[
+    {
+        "nombre": "Muebles de interior",
+        "id": 1
+    },
+    {
+        "nombre": "Celulares",
+        "id": 2
+    },
+    {
+        "nombre": "Camas y Sommiers",
+        "id": 3
+    },
+    {
+        "nombre": "Electrodomésticos",
+        "id": 4
+    }
+]

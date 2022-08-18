@@ -1,0 +1,114 @@
+[
+    {
+        "id": 1,
+        "categoria": 1,
+        "nombre": "Rack TV con escritorio",
+        "precio": 1500,
+        "imagen": "../recursos/p-muebles-interior/350376-2.jpg"
+    },
+    {
+        "id": 2,
+        "categoria": 1,
+        "nombre": "Buffet blanco",
+        "precio": 1000,
+        "imagen": "../recursos/p-muebles-interior/Haya-frente-Blanco-comprimido.jpg"
+    },
+    {
+        "id": 3,
+        "categoria": 1,
+        "nombre": "Buffet negro con alacena",
+        "precio": 1200,
+        "imagen": "../recursos/p-muebles-interior/mueble-oficina-con-alzada-1.jpg"
+    },
+    {
+        "id": 4,
+        "categoria": 1,
+        "nombre": "Repisa esquinera",
+        "precio": 900,
+        "imagen": "../recursos/p-muebles-interior/Repisa-esquinera-3.jpg"
+    },
+    {
+        "id": 5,
+        "categoria": 2,
+        "nombre": "Samsung Galaxy A20",
+        "precio": 2500,
+        "imagen": "../recursos/p-celulares/3032292_1.jpg"
+    },
+    {
+        "id": 6,
+        "categoria": 2,
+        "nombre": "Samsung Galaxy A30s",
+        "precio": 2000,
+        "imagen": "../recursos/p-celulares/3137901_1.jpg"
+    },
+    {
+        "id": 7,
+        "categoria": 2,
+        "nombre": "Samsung Galaxy A20s",
+        "precio": 2200,
+        "imagen": "../recursos/p-celulares/celular1.jpg"
+    },
+    {
+        "id": 8,
+        "categoria": 2,
+        "nombre": "Moto G51 5G",
+        "precio": 1900,
+        "imagen": "../recursos/p-celulares/d6850968f4b2758b484bf8ae8a71.jpg"
+    },
+    {
+        "id": 9,
+        "categoria": 3,
+        "nombre": "Cama juvenil",
+        "precio": 3500,
+        "imagen": "../recursos/p-camas-sommiers/3616627_1.jpg"
+    },
+    {
+        "id": 10,
+        "categoria": 3,
+        "nombre": "Conjunto sommier cómodo",
+        "precio": 3000,
+        "imagen": "../recursos/p-camas-sommiers/7693a794a286ae6c84e216f47301.jpg"
+    },
+    {
+        "id": 11,
+        "categoria": 3,
+        "nombre": "Conjunto sommier suave",
+        "precio": 3200,
+        "imagen": "../recursos/p-camas-sommiers/colchon1.jpeg"
+    },
+    {
+        "id": 12,
+        "categoria": 3,
+        "nombre": "Cama box",
+        "precio": 2900,
+        "imagen": "../recursos/p-camas-sommiers/D_889149-MLA45154464304_032021-O.jpg"
+    },
+    {
+        "id": 13,
+        "categoria": 4,
+        "nombre": "Procesadora Atma",
+        "precio": 4500,
+        "imagen": "../recursos/p-electrodomesticos/1948076_1.jpg"
+    },
+    {
+        "id": 14,
+        "categoria": 4,
+        "nombre": "Cafetera Wurden",
+        "precio": 4000,
+        "imagen": "../recursos/p-electrodomesticos/880294644_1.jpg"
+    },
+    {
+        "id": 15,
+        "categoria": 4,
+        "nombre": "Microondas Samsung",
+        "precio": 4200,
+        "imagen": "../recursos/p-electrodomesticos/micro-sam-28s-21-e0267e94e85841902c15568399067163-1024-1024.jpg"
+    },
+    {
+        "id": 16,
+        "categoria": 4,
+        "nombre": "Pava eléctrica calentona",
+        "precio": 3900,
+        "imagen": "../recursos/p-electrodomesticos/pava1.jpg"
+    }
+]
