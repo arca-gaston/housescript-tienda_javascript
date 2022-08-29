@@ -12,6 +12,9 @@ const modalCarritoBS = new bootstrap.Modal(modalCarrito)
 const modalComprarProducto = document.getElementById('comprarProducto')
 const modalComprarProductoBS = new bootstrap.Modal(modalComprarProducto)
 
+// Modal
+let contadorCarrito = document.querySelector("#contadorCarrito")
+
 let carrito = [];
 let categorias = [];
 
@@ -61,12 +64,14 @@ function agregarProductoACarrito() {
     sessionStorage.setItem('Carrito', JSON.stringify(carrito));
     btnVerCarrito.disabled = false;
     modalComprarProductoBS.hide();
+    contadorCarrito.innerHTML = carrito.length
     crearNotificacion('success', 'El producto fue agregado al carrito exitosamente.')
 }
 
 function cargarTienda() {
     cargarCategorias();
     carrito = JSON.parse(sessionStorage.getItem('Carrito')) ?? [];
+    contadorCarrito.innerHTML = carrito.length
 }
 
 function cargarCategorias() {
@@ -152,6 +157,7 @@ function crearNotificacion(tipo, mensaje) {
         crearNotificacion("success", "Su carrito ha sido pagado.");
         carrito = []
         sessionStorage.removeItem('Carrito');
+        contadorCarrito.innerHTML = 0
         modalCarritoBS.hide();
     });
     cargarTienda();

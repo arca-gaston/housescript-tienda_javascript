@@ -28,15 +28,16 @@
                     <a href="index.html"><img class="border border-dark border-5" src="recursos/FH INICIO.png"
                             alt="Feria del Hogar" /></a>
                 </div>
-                <div class="d-flex align-items-center d-none d-sm-block">
+                <div class="d-flex flex-fill align-items-center d-none d-sm-block">
                     <h1 class="text-white pl-5">FERIA DEL HOGAR</h1>
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="text-white fa-solid fa-bars text-white fa-2x"></i>
+                <button class="btn me-5 fa-2x position-relative " id="verCarrito">
+                    <span class="fs-6 position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="contadorCarrito">
+                        0
+                    </span>
+                    <i class="fa-solid fa-cart-shopping"></i>
                 </button>
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                </div>
+            </div>
             </div>
         </nav>
     </header>
@@ -46,11 +47,6 @@
             <div class="row">
                 <div class="col justify-content-center d-flex pt-5">
                     <h2>PRODUCTOS</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col justify-content-end d-flex gap-2 pt-5 ">
-                    <button class="btn btn-primary" id="verCarrito">Ver carrito</button>
                 </div>
             </div>
             <div id="tiendaOnline"></div>
