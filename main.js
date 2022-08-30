@@ -40,15 +40,22 @@ function verCarrito(carrito) {
 
 function mostrarProducto(botonSelecionado) {
     let { productoId, categoriaId } = botonSelecionado.dataset;
-    console.log(productoId, categoriaId, botonSelecionado.dataset);
     let categoriaSeleccionada = categorias.find(categoria => categoria.id == categoriaId)
     productoSeleccionado = categoriaSeleccionada.obtenerProducto(productoId);
     let productoDetalle = `
     <img src="${productoSeleccionado.imagen}" id="modalProductoImagen"
          class="card-img-top border-bottom border-dark" alt="${productoSeleccionado.nombre}"/>
-    <p id="modalProductoTitulo">${productoSeleccionado.nombre}</p>
-    <p>Precio: $<span id="modalProductoPrecio">${productoSeleccionado.precio}</span></p>
+    <p class="fs-3" id="modalProductoTitulo">${productoSeleccionado.nombre}</p>
     <p id="modalProductoDesc">${productoSeleccionado.descripcion}</p>
+    <p id="modalProductoCant">Cantidad</p>
+    <div class="row">
+        <div class="input-group mb-3 col-6">
+            <button class="btn text-dark shadow-none border-light-gray" type="button"><i class="fa-solid fa-minus"></i></button>
+            <input type="text" class="form-control shadow-none" aria-label="Cantidad de productos">
+            <button class="btn text-dark shadow-none border-light-gray" type="button"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <p class="fs-4 col-6">Precio: $<span id="modalProductoPrecio">${productoSeleccionado.precio}</span></p>
+    </div>
     `;
     let modalBody = document.querySelector('#modalBody');
     modalBody.innerHTML = productoDetalle;
@@ -120,7 +127,6 @@ function cargarProductos() {
                             producto</a>
                     </div>
                 </div>`
-                console.log(categoriaHtml);
                 categoriaHtml.append(div)
             }
         })
