@@ -29,9 +29,9 @@ class Categoria {
 
 class Orden {
     items = 0;
-    constructor(producto) {
+    constructor(producto, cantidadDeElementos = 1) {
         this.producto = producto;
-        this.items = 1;
+        this.items = cantidadDeElementos;
     }
 
     modificarCantidad(nuevaCantidad){

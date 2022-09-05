@@ -5,6 +5,8 @@ const productosCarrito = document.getElementById('productosCarrito')
 const btnVerCarrito = document.getElementById('verCarrito')
 const btnPagar = document.getElementById('pagarBtn')
 const agregarACarritoBtn = document.getElementById('agregarACarritoBtn')
+const restarCantidadBtn = document.getElementById('restarCantidad')
+const sumarCantidadBtn = document.getElementById('sumarCantidad')
 
 // Modal
 const modalCarrito = document.getElementById('modalCarrito')
@@ -27,9 +29,12 @@ function verCarrito(carrito) {
     }
     let totalTicket = 0;
     let carritoLista = ""
-    for (let orden of carrito) {
-        carritoLista += `<p>Cantidad: ${orden.items} ~ ${orden.producto.nombre} ~ $${orden.producto.precio}</p>`;
-        totalTicket += orden.producto.precio;
+    for (const [indice,orden] of carrito.entries()) {
+        carritoLista += `<div class="d-flex align-items-center gap-1">
+                            <button class="btn btn-outline-primary text-dark fs-6 p-1" onclick="borrarOrden(${indice})"><i class="fa-solid fa-trash-can"></i></button>
+                            <p class="m-0">Cantidad: ${orden.items} ~ ${orden.producto.nombre} ~ $${orden.producto.precio}</p>
+                        </div>`;
+        totalTicket += orden.obtenerTotal();
     }
     const totalCarrito = document.getElementById('totalCarrito')
     productosCarrito.innerHTML = carritoLista;
@@ -37,6 +42,17 @@ function verCarrito(carrito) {
     modalCarritoBS.show();
 }
 
+function borrarOrden(ordenId) {
+    console.log(carrito[ordenId])
+    carrito.splice(ordenId, 1)
+    contadorCarrito.innerHTML = carrito.length;
+    sessionStorage.setItem('Carrito', JSON.stringify(carrito));
+    if (carrito.length > 0){
+        verCarrito(carrito)
+    } else {
+        modalCarritoBS.hide();
+    }
+}
 
 function mostrarProducto(botonSelecionado) {
     let { productoId, categoriaId } = botonSelecionado.dataset;
@@ -47,16 +63,9 @@ function mostrarProducto(botonSelecionado) {
          class="card-img-top border-bottom border-dark" alt="${productoSeleccionado.nombre}"/>
     <p class="fs-3" id="modalProductoTitulo">${productoSeleccionado.nombre}</p>
     <p id="modalProductoDesc">${productoSeleccionado.descripcion}</p>
-    <p id="modalProductoCant">Cantidad</p>
-    <div class="row">
-        <div class="input-group mb-3 col-6">
-            <button class="btn text-dark shadow-none border-light-gray" type="button"><i class="fa-solid fa-minus"></i></button>
-            <input type="text" class="form-control shadow-none" aria-label="Cantidad de productos">
-            <button class="btn text-dark shadow-none border-light-gray" type="button"><i class="fa-solid fa-plus"></i></button>
-        </div>
-        <p class="fs-4 col-6">Precio: $<span id="modalProductoPrecio">${productoSeleccionado.precio}</span></p>
-    </div>
     `;
+    let precioProducto = document.querySelector("#modalProductoPrecio");
+    precioProducto.innerHTML = productoSeleccionado.precio;
     let modalBody = document.querySelector('#modalBody');
     modalBody.innerHTML = productoDetalle;
 }
@@ -66,8 +75,16 @@ function agregarProductoACarrito() {
         crearNotificacion('error', 'No se pudo generar la orden para el producto selecionado.')
         return;
     }
-    let nuevaOrden = new Orden(productoSeleccionado);
-    carrito.push(nuevaOrden);
+    const inputCantidad = document.getElementById('inputCantidad')
+    let cantidadSeleccionada = parseInt(inputCantidad.value)
+    let ordenExistente = carrito.find(orden => orden.producto === productoSeleccionado)
+    if (ordenExistente){
+        ordenExistente.modificarCantidad(cantidadSeleccionada + ordenExistente.items)
+    } else {
+        let nuevaOrden = new Orden(productoSeleccionado, cantidadSeleccionada);
+        carrito.push(nuevaOrden);
+    }
+    inputCantidad.value = 1;
     sessionStorage.setItem('Carrito', JSON.stringify(carrito));
     btnVerCarrito.disabled = false;
     modalComprarProductoBS.hide();
@@ -77,7 +94,11 @@ function agregarProductoACarrito() {
 
 function cargarTienda() {
     cargarCategorias();
-    carrito = JSON.parse(sessionStorage.getItem('Carrito')) ?? [];
+    let carritoExistente = JSON.parse(sessionStorage.getItem('Carrito')) ?? [];
+    for (let order of carritoExistente){
+        let ordenExistente = new Orden(order.producto, order.items);
+        carrito.push(ordenExistente);
+    }
     contadorCarrito.innerHTML = carrito.length
 }
 
@@ -118,7 +139,8 @@ function cargarProductos() {
                          class="card-img-top border-bottom border-dark" alt="Rack TV con escritorio"/>
                     <div class="card-body">
                         <p class="card-title text-center fs-5">${producto.nombre}</p>
-                        <p class="card-text text-center">$${producto.precio}</p>
+                        <p class="card-text text-center">$${
+                    producto.precio}</p>
                         <a href="#" class="btn btn-primary d-flex justify-content-center seleccionarProducto"
                            data-bs-toggle="modal"
                            data-producto-id="${producto.id}"
@@ -139,6 +161,15 @@ function obtenerJson(url) {
             crearNotificacion("error", "Ocurrio un error cargando los productos");
             return [];
         })
+}
+
+function actualizarCantidad(valor){
+    const inputCantidad = document.getElementById('inputCantidad')
+    let valorActual = parseInt(inputCantidad.value);
+    if (valorActual === 1 && valor == -1){
+        return;
+    }
+    inputCantidad.value = valorActual + valor
 }
 
 function crearNotificacion(tipo, mensaje) {
@@ -166,5 +197,8 @@ function crearNotificacion(tipo, mensaje) {
         contadorCarrito.innerHTML = 0
         modalCarritoBS.hide();
     });
+    restarCantidadBtn.addEventListener('click', () => actualizarCantidad(-1));
+    sumarCantidadBtn.addEventListener('click',() => actualizarCantidad(1));
+
     cargarTienda();
 })();

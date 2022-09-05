@@ -60,17 +60,17 @@
                             <h5 class="modal-title">Información de producto</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body" id="modalBody">
-                            <img src="../recursos/p-muebles-interior/350376-2.jpg" id="modalProductoImagen"
-                                class="card-img-top border-bottom border-dark" alt="Rack TV con escritorio" />
-                            <p id="modalProductoTitulo">Producto</p>
-                            <p id="modalProductoDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Consequatur sequi impedit esse
-                                asperiores numquam commodi obcaecati animi expedita cum totam, doloribus, ullam aliquid
-                                error, reprehenderit quos tenetur eligendi nihil quisquam!</p>
-                            <p id="modalProductoCant">Cantidad</p>
-                            <p>Precio: $<span id="modalProductoPrecio">1000</span></p>
-
+                        <div class="modal-body">
+                            <div id="modalBody"></div>
+                            <div class="row">
+                                <p id="modalProductoCant">Cantidad</p>
+                                <div class="input-group mb-3 col-6">
+                                    <button id="restarCantidad" class="btn text-dark shadow-none border-light-gray" type="button"><i class="fa-solid fa-minus"></i></button>
+                                    <input  id="inputCantidad" value="1" type="number" min="1" class="form-control shadow-none text-center" aria-label="Cantidad de productos" disabled >
+                                    <button id="sumarCantidad" class="btn text-dark shadow-none border-light-gray" type="button"><i class="fa-solid fa-plus"></i></button>
+                                </div>
+                                <p class="fs-4 col-6">Precio: $<span id="modalProductoPrecio"></span></p>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -91,7 +91,7 @@
                         <div class="modal-body">
                             <h3>Su carrito se compone de los siguientes productos: </h3>
                             <hr>
-                            <div id="productosCarrito">
+                            <div class="d-flex flex-column gap-3" id="productosCarrito">
 
                             </div>
                             <hr>
